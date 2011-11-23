@@ -2,6 +2,11 @@
 *Is a FAST nodejs library for signing WebMoney requests written in C/C++*
 
 ## Install:
+### Using npm
+
+npm install nodewm
+
+### From sources
 1) go to the directory with nodewm library
 
 2) execute `node-waf configure build`
