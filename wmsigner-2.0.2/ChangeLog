@@ -1,0 +1,55 @@
+Changelog
+
+Mon Sep 21 18:33:00 MSK 2009
+----------------------------
+  V 2.0.2
+  * Bug:
+    - ignore parameter in commandline when pass length=1
+
+Thu Aug 14 17:45:00 MSK 2007
+----------------------------
+  V 2.0.1
+  * Bug:
+    - error with signing string with \n
+
+Mon Jul 23 15:08:00 MSK 2007
+----------------------------
+  V 2.0
+  * Bug:
+    - was: unjustified require wmsigner.ini
+
+Wed Jul 18 19:38:00 MSK 2007
+----------------------------
+  V 2.0 beta
+  * Added command line options (see man page) 
+  * Big code changes
+  * Rename WMSigner to wmsigner
+
+Tue Jan 9 17:02:00 MSK 2007
+----------------------------
+  V 1.4
+  * Compatibles:
+    - add precompiler directive for compatible FreeBSD <= 4,
+      patch by Kostya Glazyrin <loriecat@rambler.ru>
+
+Mon Nov 14 17:05:00 MSK 2006
+----------------------------
+  V 1.3
+  * Small bug:
+    - fix VERSION in Makefile
+    - fix '\r\n' bug (appear in X6 WebMoney interface)
+  * Remove '-static' compiler directive
+
+Mon Jul 3 14:57:00 MSK 2006
+----------------------------
+  V 1.2
+  * Compatibles:
+    - 64-bit arch compatibles patch by Sergey Skvortsov <skv@protey.ru>
+    - add ChangeLog, README, README.rus in /usr/share/doc/WMSigner
+    
+Fri Jun 30 18:27:44 MSK 2006
+----------------------------
+  V 1.1
+  * Bugfixes:
+    - memory leak patch by Sergey Skvortsov <skv@protey.ru>
+

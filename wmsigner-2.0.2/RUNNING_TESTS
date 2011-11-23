@@ -1,0 +1,5 @@
+
+1. Fix values in test.ini (unix and win32 - different path and extensions)
+2. Run:
+   $ make
+   $ make test

@@ -1,0 +1,75 @@
+$inifile = 'test.ini';
+open ( INI, "< $inifile" ) or die "Cannot open '$inifile' file!\n";
+$wmid = <INI>;
+$wmid =~ s/\n//;
+$pass = <INI>;
+$pass =~ s/\n//;
+$key  = <INI>;
+$key =~ s/\n//;
+$exe = <INI>;
+$exe =~ s/\n//;
+$exe2 = <INI>;
+$exe2 =~ s/\n//;
+close(INI);
+
+if ( $wmid =~ /^(\d{12})/i ) {
+    print "\nUse WMID: $1\n";
+} else {
+    print "ERROR. Please, fix WMID in test.ini and run 'make test'!\n";
+    exit(1);
+};
+
+if ( $pass eq '' ) {
+    print "ERROR. Please, fix PASS in test.ini and run 'make test'!\n";
+    exit(1);
+};
+
+if ( $key eq '' ) {
+    print "ERROR. Please, fix KEY in test.ini and run 'make test'!\n";
+    exit(1);
+} else {
+    $pass =~ s/./\*/g;
+    print "Use PASS: $pass\n";
+};
+
+if ( ! open (TEST, "< $key" ) ) {
+    print "ERROR. Could't open '$key'!\n";
+    exit(1);
+} else {
+    print "Use KEY: $key\n";
+    close (TEST);
+};
+
+print "Use WMSIGNER: $exe\n";
+print "Use CODE64: $exe2\n";
+print "If it incorrect, please fix test.ini and run 'make test' again.\n\n";
+
+if ( ! open (TEST, "> wmsigner.ini" ) ) {
+    print "ERROR. Could't write 'wmsigner.ini'!\n";
+    exit(1);
+} else {
+    close (TEST);
+    unlink ('wmsigner.ini');
+};
+
+$r = `$exe2 -K64 $key > test.b64`;
+
+if ( ! open(TEST, "< test.b64" ) ) {
+    print "ERROR. Cannot write 'test.b64'!\n";
+    exit(1);
+} else {
+    $r = <TEST>;
+    if ( length($r) < 164 ) {
+        print "ERROR. Cannot write 'test.b64'!\n";
+    };
+    close(TEST);
+};
+
+use Test::Harness;
+  
+runtests( 't/base.t', 't/sign.t', 't/iface.t' );
+#runtests( 't/iface.t' );
+
+if ( $exe =~ /\.exe$/) {
+    unlink('wmsigner.ini'); unlink('test.b64');
+}

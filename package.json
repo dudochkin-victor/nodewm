@@ -1,0 +1,12 @@
+{
+  "name": "nodewm",
+  "author": "Dudochkin Victor",
+  "description": "wmsigner library for node which interact with WebMoney",
+  "version": "1.0.1",
+  "contributors": [ 
+    { "name": "Dudochkin Victor", "email": "blacksmith@gogoo.ru" }
+  ],
+  "main": "build/default/wmsigner",
+  "directories": { "lib": "./build/default" },
+  "engines": { "node": ">= 0.2.0" }
+}
